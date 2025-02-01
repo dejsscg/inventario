@@ -1,3 +1,5 @@
+const API_URL = 'https://inventario-backend.onrender.com';
+
 document.addEventListener('DOMContentLoaded', () => {
     initializeMobileMenu();
     initializeScrollAnimations();

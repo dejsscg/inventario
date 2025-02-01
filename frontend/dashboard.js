@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+const API_URL = 'https://inventario-backend.onrender.com';
+
+document.addEventListener('DOMContentLoaded', async () => {
     // Verificar autenticación
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -32,7 +34,7 @@ async function loadDashboardStats() {
         };
 
         // Cargar total de motocicletas
-        const motorcyclesResponse = await fetch('http://localhost:5000/api/motorcycles', {
+        const motorcyclesResponse = await fetch(`${API_URL}/api/motorcycles`, {
             headers
         });
         const motorcyclesData = await motorcyclesResponse.json();
