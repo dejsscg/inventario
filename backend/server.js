@@ -18,7 +18,10 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Rutas
 const authRoutes = require('./routes/auth');
+const motorcycleRoutes = require('./routes/motorcycles');
+
 app.use('/api/auth', authRoutes);
+app.use('/api/motorcycles', motorcycleRoutes);
 
 // Puerto
 const PORT = process.env.PORT || 5000;
