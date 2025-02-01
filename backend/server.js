@@ -1,15 +1,22 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const passport = require('passport');
 const dotenv = require('dotenv');
 
 // Configuración
 dotenv.config();
+require('./config/passport-setup');
+
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['https://inventario2.netlify.app', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
+app.use(passport.initialize());
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGODB_URI)
