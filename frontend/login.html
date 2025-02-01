@@ -36,14 +36,17 @@
             margin-bottom: 0.5rem;
         }
 
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
         }
 
         .form-group {
             position: relative;
+            margin-bottom: 1.5rem;
         }
 
         .form-group i {
@@ -68,7 +71,7 @@
             outline: none;
         }
 
-        .login-button {
+        .submit-button {
             background: #4A90E2;
             color: white;
             border: none;
@@ -77,9 +80,11 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            width: 100%;
+            margin-bottom: 1rem;
         }
 
-        .login-button:hover {
+        .submit-button:hover {
             background: #357ABD;
         }
 
@@ -90,15 +95,32 @@
             display: none;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .success-message {
+            color: #28a745;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: #4A90E2;
+            border-bottom: 2px solid #4A90E2;
+            margin-bottom: -2px;
         }
 
         .loading {
@@ -121,6 +143,17 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,20 +161,75 @@
         <div class="login-card">
             <div class="login-header">
                 <h1>Sistema de Inventario</h1>
-                <p>Acceso Administrativo</p>
             </div>
-            <form id="loginForm" class="login-form">
+            
+            <div class="tabs">
+                <div class="tab active" data-form="login">Iniciar Sesión</div>
+                <div class="tab" data-form="register">Registrar Usuario</div>
+                <div class="tab" data-form="admin">Registrar Admin</div>
+            </div>
+
+            <!-- Formulario de Login -->
+            <form id="loginForm" class="form-container active">
                 <div class="form-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="username" placeholder="Usuario" required>
+                    <input type="text" name="username" placeholder="Usuario" required>
                 </div>
                 <div class="form-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
                 </div>
-                <button type="submit" class="login-button">Iniciar Sesión</button>
+                <button type="submit" class="submit-button">Iniciar Sesión</button>
             </form>
+
+            <!-- Formulario de Registro de Usuario -->
+            <form id="registerForm" class="form-container">
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" placeholder="Usuario" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Correo Electrónico" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="confirmPassword" placeholder="Confirmar Contraseña" required>
+                </div>
+                <button type="submit" class="submit-button">Registrar Usuario</button>
+            </form>
+
+            <!-- Formulario de Registro de Administrador -->
+            <form id="adminForm" class="form-container">
+                <div class="form-group">
+                    <i class="fas fa-user-shield"></i>
+                    <input type="text" name="username" placeholder="Usuario Administrador" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Correo Electrónico" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="confirmPassword" placeholder="Confirmar Contraseña" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-key"></i>
+                    <input type="text" name="adminCode" placeholder="Código de Administrador" required>
+                </div>
+                <button type="submit" class="submit-button">Registrar Administrador</button>
+            </form>
+
             <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
             <div id="loading" class="loading">
                 <div class="loading-spinner"></div>
             </div>

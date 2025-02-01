@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
-// Registro
+// Registro de usuario normal
 router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -13,56 +14,82 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ message: 'Usuario o email ya existe' });
     }
 
+    // Hash de la contraseña
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     // Crear nuevo usuario
     const user = new User({
       username,
       email,
-      password
+      password: hashedPassword,
+      role: 'user'
     });
 
     await user.save();
 
-    // Generar token
-    const token = jwt.sign(
-      { userId: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: '24h' }
-    );
-
-    res.status(201).json({
-      token,
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        role: user.role
-      }
-    });
+    res.status(201).json({ message: 'Usuario registrado exitosamente' });
   } catch (error) {
-    res.status(500).json({ message: 'Error en el servidor', error: error.message });
+    res.status(500).json({ message: 'Error en el registro', error: error.message });
+  }
+});
+
+// Registro de administrador
+router.post('/register-admin', async (req, res) => {
+  try {
+    const { username, email, password, adminCode } = req.body;
+
+    // Verificar código de administrador
+    if (adminCode !== process.env.ADMIN_CODE) {
+      return res.status(403).json({ message: 'Código de administrador inválido' });
+    }
+
+    // Verificar si el usuario ya existe
+    const userExists = await User.findOne({ $or: [{ email }, { username }] });
+    if (userExists) {
+      return res.status(400).json({ message: 'Usuario o email ya existe' });
+    }
+
+    // Hash de la contraseña
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Crear nuevo administrador
+    const admin = new User({
+      username,
+      email,
+      password: hashedPassword,
+      role: 'admin'
+    });
+
+    await admin.save();
+
+    res.status(201).json({ message: 'Administrador registrado exitosamente' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error en el registro', error: error.message });
   }
 });
 
 // Login
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     // Buscar usuario
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ username });
     if (!user) {
-      return res.status(400).json({ message: 'Credenciales inválidas' });
+      return res.status(400).json({ message: 'Usuario o contraseña incorrectos' });
     }
 
     // Verificar contraseña
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Credenciales inválidas' });
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+      return res.status(400).json({ message: 'Usuario o contraseña incorrectos' });
     }
 
     // Generar token
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: user._id, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: '24h' }
     );
@@ -77,7 +104,7 @@ router.post('/login', async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(500).json({ message: 'Error en el servidor', error: error.message });
+    res.status(500).json({ message: 'Error en el login', error: error.message });
   }
 });
 
