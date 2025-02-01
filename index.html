@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Nuevo Sitio</title>
+    <title>Sistema de Inventario</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="#inicio">Tu Logo</a>
+                <a href="#inicio">Inventario</a>
             </div>
             <button class="mobile-menu-button" aria-label="Menú">
                 <span></span>
@@ -21,9 +21,9 @@
             </button>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#estadisticas">Estadísticas</a></li>
+                <li><a href="#contacto">Soporte</a></li>
             </ul>
         </nav>
     </header>
@@ -31,62 +31,66 @@
     <main>
         <section id="inicio" class="hero">
             <div class="hero-content">
-                <h1 class="animate-on-scroll">Bienvenido a Tu Sitio</h1>
-                <p class="animate-on-scroll">Descubre la excelencia en cada detalle</p>
+                <h1 class="animate-on-scroll">Sistema de Inventario</h1>
+                <p class="animate-on-scroll">Gestiona tu inventario de manera eficiente y profesional</p>
             </div>
         </section>
 
-        <section id="servicios" class="services">
-            <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
+        <section id="productos" class="services">
+            <h2 class="section-title animate-on-scroll">Gestión de Productos</h2>
             <div class="services-grid">
                 <div class="service-card animate-on-scroll">
-                    <i class="fas fa-star"></i>
-                    <h3>Servicio 1</h3>
-                    <p>Descripción del servicio 1</p>
+                    <i class="fas fa-box"></i>
+                    <h3>Registro de Productos</h3>
+                    <p>Añade y gestiona productos fácilmente</p>
                 </div>
                 <div class="service-card animate-on-scroll">
-                    <i class="fas fa-gem"></i>
-                    <h3>Servicio 2</h3>
-                    <p>Descripción del servicio 2</p>
+                    <i class="fas fa-barcode"></i>
+                    <h3>Control de Stock</h3>
+                    <p>Monitorea niveles de inventario en tiempo real</p>
                 </div>
                 <div class="service-card animate-on-scroll">
-                    <i class="fas fa-magic"></i>
-                    <h3>Servicio 3</h3>
-                    <p>Descripción del servicio 3</p>
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Reportes</h3>
+                    <p>Genera informes detallados de tu inventario</p>
                 </div>
                 <div class="service-card animate-on-scroll">
-                    <i class="fas fa-heart"></i>
-                    <h3>Servicio 4</h3>
-                    <p>Descripción del servicio 4</p>
+                    <i class="fas fa-bell"></i>
+                    <h3>Alertas</h3>
+                    <p>Notificaciones de stock bajo y vencimientos</p>
                 </div>
             </div>
         </section>
 
-        <section id="galeria" class="gallery">
-            <h2 class="section-title animate-on-scroll">Nuestra Galería</h2>
+        <section id="estadisticas" class="gallery">
+            <h2 class="section-title animate-on-scroll">Estadísticas en Tiempo Real</h2>
             <div class="gallery-grid">
-                <div class="gallery-item animate-on-scroll">
-                    <img src="placeholder1.jpg" alt="Imagen 1">
+                <div class="stats-card animate-on-scroll">
+                    <h3>Productos Totales</h3>
+                    <p class="stats-number">0</p>
                 </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="placeholder2.jpg" alt="Imagen 2">
+                <div class="stats-card animate-on-scroll">
+                    <h3>Stock Bajo</h3>
+                    <p class="stats-number">0</p>
                 </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="placeholder3.jpg" alt="Imagen 3">
+                <div class="stats-card animate-on-scroll">
+                    <h3>Movimientos Hoy</h3>
+                    <p class="stats-number">0</p>
                 </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="placeholder4.jpg" alt="Imagen 4">
+                <div class="stats-card animate-on-scroll">
+                    <h3>Valor Total</h3>
+                    <p class="stats-number">S/. 0.00</p>
                 </div>
             </div>
         </section>
 
         <section id="contacto" class="contact">
             <div class="contact-container">
-                <h2 class="section-title animate-on-scroll">¡Contáctanos!</h2>
+                <h2 class="section-title animate-on-scroll">¿Necesitas Ayuda?</h2>
                 <div class="text-center">
-                    <a href="tel:+51123456789" class="contact-btn" id="call-button">
-                        <i class="fas fa-phone"></i>
-                        Llámanos
+                    <a href="mailto:soporte@inventario.com" class="contact-btn" id="support-button">
+                        <i class="fas fa-envelope"></i>
+                        Contactar Soporte
                     </a>
                 </div>
             </div>
@@ -96,10 +100,10 @@
     <footer>
         <div class="footer-content">
             <div class="social-links">
-                <a href="https://facebook.com/tusitio" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
-                <a href="https://instagram.com/tusitio" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/tuusuario/inventario" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/company/inventario" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
             </div>
-            <p>&copy; 2025 Tu Sitio. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Sistema de Inventario. Todos los derechos reservados.</p>
         </div>
     </footer>
 

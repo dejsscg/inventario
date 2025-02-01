@@ -1,62 +1,81 @@
-# Plantilla de Sitio Web Moderno
+# Sistema de Inventario
 
-Esta es una plantilla moderna y responsive para sitios web, con animaciones suaves y diseño elegante.
+Sistema moderno y eficiente para la gestión de inventarios, con una interfaz web responsive y amigable.
 
 ## Características
 
-- Diseño responsive
-- Animaciones al scroll
-- Menú móvil
-- Secciones:
-  - Hero
-  - Servicios
-  - Galería
-  - Contacto
-- Integración con redes sociales
-- Optimizado para SEO
+- Diseño responsive y moderno
+- Panel de estadísticas en tiempo real
+- Gestión de productos
+- Sistema de alertas
+- Generación de reportes
+- Interfaz optimizada para móviles
+
+## Funcionalidades
+
+1. **Gestión de Productos**
+   - Registro de productos
+   - Control de stock
+   - Alertas de nivel bajo
+   - Seguimiento de movimientos
+
+2. **Estadísticas**
+   - Total de productos
+   - Productos en stock bajo
+   - Movimientos diarios
+   - Valor total del inventario
+
+3. **Reportes**
+   - Informes detallados
+   - Exportación de datos
+   - Histórico de movimientos
+   - Análisis de tendencias
 
 ## Tecnologías
 
 - HTML5
-- CSS3
+- CSS3 (con variables para temas)
 - JavaScript (Vanilla)
 - Font Awesome para iconos
 - Google Fonts
+
+## Instalación
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tuusuario/inventario.git
+   ```
+
+2. Abre el archivo index.html en tu navegador
 
 ## Personalización
 
 1. Colores
    - Edita las variables CSS en `:root` en `styles.css`
-   - Personaliza los colores primario, secundario y de acento
+   - Esquema de colores profesional incluido
 
-2. Fuentes
-   - Cambia las fuentes en Google Fonts
-   - Actualiza las variables `--font-primary` y `--font-secondary`
-
-3. Contenido
-   - Actualiza el texto en `index.html`
-   - Reemplaza las imágenes en la galería
-   - Modifica los iconos de servicios
-
-4. Redes Sociales
-   - Actualiza los enlaces en el footer
-   - Personaliza los iconos según necesites
-
-## Despliegue
-
-1. Clona este repositorio
-2. Personaliza el contenido
-3. Despliega en tu servicio de hosting favorito (Netlify, Vercel, etc.)
+2. Contenido
+   - Actualiza los textos en `index.html`
+   - Modifica los iconos según necesites
+   - Personaliza las estadísticas
 
 ## Estructura de Archivos
 
 ```
-nuevo-proyecto/
+inventario/
 ├── index.html
 ├── styles.css
 ├── script.js
 └── README.md
 ```
+
+## Próximas Funcionalidades
+
+- [ ] Backend para persistencia de datos
+- [ ] Sistema de usuarios
+- [ ] API REST
+- [ ] Integración con bases de datos
+- [ ] Módulo de facturación
 
 ## Licencia
 

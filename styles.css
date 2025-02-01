@@ -1,10 +1,13 @@
 :root {
-    --primary-color: #4a90e2;
-    --secondary-color: #2c3e50;
-    --accent-color: #e74c3c;
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
     --text-color: #333;
     --light-text: #fff;
     --background-color: #f5f5f5;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --danger-color: #e74c3c;
     --font-primary: 'Playfair Display', serif;
     --font-secondary: 'Roboto', sans-serif;
 }
@@ -91,7 +94,7 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-bg.jpg');
+    background-image: linear-gradient(rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.9)), url('hero-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -154,13 +157,48 @@ body {
 
 .service-card i {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: var(--accent-color);
     margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover i {
+    transform: scale(1.2);
 }
 
 .service-card h3 {
     font-family: var(--font-primary);
     margin-bottom: 1rem;
+}
+
+/* Stats Cards */
+.stats-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-card h3 {
+    font-family: var(--font-primary);
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.stats-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
 }
 
 /* Gallery Section */
@@ -214,7 +252,7 @@ body {
     display: inline-flex;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: white;
     text-decoration: none;
     border-radius: 50px;
@@ -228,7 +266,7 @@ body {
 }
 
 .contact-btn:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 
 /* Footer */
