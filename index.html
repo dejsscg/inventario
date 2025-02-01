@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Nuevo Sitio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#inicio">Tu Logo</a>
+            </div>
+            <button class="mobile-menu-button" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1 class="animate-on-scroll">Bienvenido a Tu Sitio</h1>
+                <p class="animate-on-scroll">Descubre la excelencia en cada detalle</p>
+            </div>
+        </section>
+
+        <section id="servicios" class="services">
+            <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-star"></i>
+                    <h3>Servicio 1</h3>
+                    <p>Descripción del servicio 1</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-gem"></i>
+                    <h3>Servicio 2</h3>
+                    <p>Descripción del servicio 2</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-magic"></i>
+                    <h3>Servicio 3</h3>
+                    <p>Descripción del servicio 3</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-heart"></i>
+                    <h3>Servicio 4</h3>
+                    <p>Descripción del servicio 4</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="gallery">
+            <h2 class="section-title animate-on-scroll">Nuestra Galería</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll">
+                    <img src="placeholder1.jpg" alt="Imagen 1">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="placeholder2.jpg" alt="Imagen 2">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="placeholder3.jpg" alt="Imagen 3">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="placeholder4.jpg" alt="Imagen 4">
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact">
+            <div class="contact-container">
+                <h2 class="section-title animate-on-scroll">¡Contáctanos!</h2>
+                <div class="text-center">
+                    <a href="tel:+51123456789" class="contact-btn" id="call-button">
+                        <i class="fas fa-phone"></i>
+                        Llámanos
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://facebook.com/tusitio" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/tusitio" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2025 Tu Sitio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
