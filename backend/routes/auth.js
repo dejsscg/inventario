@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const User = require('../models/User');
 
 // Registro de usuario normal
@@ -128,5 +129,32 @@ router.get('/me', async (req, res) => {
     res.status(401).json({ message: 'Token inválido' });
   }
 });
+
+// Rutas de Google OAuth
+router.get('/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email']
+  })
+);
+
+router.get('/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  (req, res) => {
+    // Generar token JWT
+    const token = jwt.sign(
+      { userId: req.user._id, role: req.user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '24h' }
+    );
+
+    // Redirigir al frontend con el token
+    res.redirect(`/auth-success.html?token=${token}&user=${JSON.stringify({
+      id: req.user._id,
+      username: req.user.username,
+      email: req.user.email,
+      role: req.user.role
+    })}`);
+  }
+);
 
 module.exports = router;

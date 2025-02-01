@@ -18,13 +18,20 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: function() {
+      return !this.googleId; // La contraseña solo es requerida si no hay googleId
+    },
     minlength: 6
   },
   role: {
     type: String,
     enum: ['admin', 'user'],
     default: 'user'
+  },
+  googleId: {
+    type: String,
+    unique: true,
+    sparse: true // Permite que sea null/undefined
   },
   createdAt: {
     type: Date,
@@ -47,7 +54,11 @@ userSchema.pre('save', async function(next) {
 
 // Método para verificar contraseña
 userSchema.methods.comparePassword = async function(candidatePassword) {
-  return bcrypt.compare(candidatePassword, this.password);
+  try {
+    return await bcrypt.compare(candidatePassword, this.password);
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = mongoose.model('User', userSchema);

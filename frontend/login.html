@@ -154,6 +154,63 @@
                 transform: translateY(0);
             }
         }
+
+        .divider {
+            text-align: center;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background-color: #ddd;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider span {
+            background-color: white;
+            padding: 0 10px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: white;
+            color: #444;
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .google-btn:hover {
+            background: #f8f9fa;
+            border-color: #aaa;
+        }
+
+        .google-btn i {
+            font-size: 1.2rem;
+            color: #DB4437;
+        }
     </style>
 </head>
 <body>
@@ -180,6 +237,15 @@
                     <input type="password" name="password" placeholder="Contraseña" required>
                 </div>
                 <button type="submit" class="submit-button">Iniciar Sesión</button>
+                
+                <div class="divider">
+                    <span>o</span>
+                </div>
+                
+                <a href="/api/auth/google" class="google-btn">
+                    <i class="fab fa-google"></i>
+                    Continuar con Google
+                </a>
             </form>
 
             <!-- Formulario de Registro de Usuario -->
