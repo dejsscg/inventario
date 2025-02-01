@@ -43,7 +43,7 @@ Sistema moderno y eficiente para la gestión de inventarios, con una interfaz we
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tuusuario/inventario.git
+   git clone https://github.com/dejsscg/inventario.git
    ```
 
 2. Abre el archivo index.html en tu navegador
