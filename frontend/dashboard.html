@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Inventario</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            position: fixed;
+            height: 100vh;
+            width: 250px;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .sidebar-menu i {
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 2rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0.5rem 0;
+        }
+
+        .recent-activity {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .activity-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .activity-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+        }
+
+        .activity-details h4 {
+            margin: 0;
+            color: #333;
+        }
+
+        .activity-details p {
+            margin: 0.25rem 0 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .logout-button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.8rem 1rem;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .logout-button i {
+            margin-right: 1rem;
+        }
+
+        .logout-button:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Sistema de Inventario</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#" class="active">
+                        <i class="fas fa-home"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-motorcycle"></i>
+                        Motocicletas
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-users"></i>
+                        Conductores
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Multas
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-money-bill-wave"></i>
+                        Pagos
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chart-bar"></i>
+                        Reportes
+                    </a>
+                </li>
+            </ul>
+            <button id="logoutButton" class="logout-button">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </button>
+        </aside>
+
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userName">Administrador</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Motocicletas</h3>
+                    <div class="value" id="totalMotorcycles">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Conductores Activos</h3>
+                    <div class="value" id="activeDrivers">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Multas Pendientes</h3>
+                    <div class="value" id="pendingFines">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Pagos del Mes</h3>
+                    <div class="value" id="monthlyPayments">$0</div>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h2>Actividad Reciente</h2>
+                <ul class="activity-list" id="activityList">
+                    <!-- La actividad reciente se cargará dinámicamente -->
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
